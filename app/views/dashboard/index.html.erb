@@ -1,0 +1,42 @@
+<div class= "col s11">
+	<div class="row">
+		<h3 class="col s9" >Switches</h3>
+		<a class="btn btn-default" href="<%=new_switch_path%>" role="button" style="margin-top:24px">Add Switch</a>
+	</div>
+	<table class="striped bordered highlight">
+		<tr>
+			<th></th>
+			<th>Status</th>
+			<th>Name</th>
+			<th>Alerts</th>
+			<th>Contacted At</th>
+			<th>Active Ports</th>
+			<th>Uptime<th>
+		</tr>
+		<% @switches.each do  |switch|%>
+		<tr class="clickable-row" data-href='http://localhost:3000/<%= switch_path(switch.id) %>'>
+			<td></td>
+			<td>
+				<%if switch.contacted_at < DateTime.now + 2.minutes%>
+				<%=raw active_icon "active"%>
+				<% else %>
+				<%=raw active_icon "inactive"%>
+				<% end %>
+			</td>
+			<td><a href="<%= switch_path(switch.id) %>"><%= switch.name %></a></td>
+			<td></td>
+			<td><%=switch.contacted_at.strftime("%b %d, %Y %I:%M:%p")%></td>
+			<td><%=switch.ports.where("status = 'active'").count%>/<%=switch.ports.count%></td>
+			<td><%=@properties["up_time"]["18"]%></td>
+		</tr>
+		<%end%>
+	</table>
+</div>
+<% content_for :jquery do %>
+    $(".clickable-row").click(function() {
+    	console.log("dssd");
+        window.location.href = $(this).data("href");
+    });
+<% end %>
+
+

@@ -1,0 +1,11 @@
+<% if flash[:danger] %>
+	<%= flash[:danger] %>
+<% end %>
+<%= form_for @session, :url => { :action => "create" } do |f| %>
+  <%= f.label 'email' %>
+  <%= f.text_field :email %><br>
+  <%= f.label 'password' %>
+  <%= f.password_field :password %><br>
+  <%= submit_tag 'Log In' %>
+<% end %>
+<a href="/users/new">Registration</a>

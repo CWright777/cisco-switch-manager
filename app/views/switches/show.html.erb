@@ -1,0 +1,49 @@
+<div class= "col s11">
+	<div class="headingme"><a>Switch</a> > <%=@switch.name%></div>
+	<div class="row">
+		<h4>Configuration</h4>
+		<%= form_for @switch_model, :url => { :action => "update" },html: { class:"col s3", method: "patch" } do |f| %>
+		  <%= f.label 'Name' %>
+		  <%= f.text_field :name %></p>
+		<% end %>
+	</div>
+	<ul>
+		<li>Status: 
+			<%if @switch.contacted_at < DateTime.now + 2.minutes%>
+				Active
+			<% else %>
+				Inactive
+			<% end %>
+		</li>
+		<li>IP address: <%=@switch.ipaddress%></li>
+		<li>Serial: <%=@switch.serial%></li>
+	</ul>
+	<div class="row">
+		<table class="striped bordered highlight">
+			<tr>
+				<th></th>
+				<th>Status</th>
+				<th>Action</th>
+				<th>Port Name</th>
+				<th>Mac Address</th>
+				<th>Received Bytes</th>
+				<th>Sent Bytes</th>
+			</tr>
+			<%@ports.each do |port| %>
+			<tr>
+				<td></td>
+				<td><%= raw active_icon port.status%></td>
+				<%if @port_status[port.int_idx.to_s] == "2"%>
+				<td><a href="/switch/enable/<%=@switch.id%>h<%=port.id%>">Enable</a></td>
+				<%elsif @port_status[port.int_idx.to_s] == "1"%>
+				<td><a href="/switch/disable/<%=@switch.id%>h<%=port.id%>">Disable</a></td>
+				<% end %>
+				<td><%=port.port_name%></td>
+				<td><%=port.mac_address%></td>
+				<td><%=number_to_human_size(port.input)%></td>
+				<td><%=number_to_human_size(port.output)%></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+</div>

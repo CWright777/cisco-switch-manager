@@ -1,0 +1,14 @@
+<form action="<%=switches_path%>" method="post">
+  <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+  <label>IP address:</label>
+  <input type="text" name="switch[ipaddress]"><br>
+  <label>User Name:</label>
+  <input type="text" name="switch[user_name]"><br>
+  <label>Switch  SSH Password:<label>
+  <input type="text" name="switch[switch_password]"><br>
+  <label>Switch Enable Password:<label>
+  <input type="text" name="switch[community]"><br>
+  <label>Switch Community Password:<label>
+  <input type="text" name="switch[enable_password]"><br>
+  <input type="submit" value="Add Switch">
+</form>
