@@ -14,5 +14,17 @@ class ApplicationController < ActionController::Base
     end
     "<i class='material-icons'>#{icon}</i>"
   end
-  helper_method :current_user, :active_icon
+
+  def snmp_walk creds, table_columns, &block
+    SNMP::Manager.open(
+      host: creds[:host],
+      community: creds[:community]
+    ) do |manager|
+      manager.walk(table_columns) do |row|
+        yield row
+      end
+    end
+  end
+
+  helper_method :current_user, :active_icon,:snmp_walk
 end

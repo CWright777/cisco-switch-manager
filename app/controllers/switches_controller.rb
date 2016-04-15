@@ -8,9 +8,11 @@ class SwitchesController < ApplicationController
     # @switch = Switch.find(1)
     @port = {}
     table_columns = ["ifIndex","ifDescr", "ifHCInOctets","ifHCOutOctets","ifPhysAddress"]
-    SNMP::Manager.open(:host => @switch.ipaddress, community: @switch.community) do |manager|
-    # SNMP::Manager.open(:host => "172.16.1.3", community: "password") do |manager|
-      manager.walk(table_columns) do |row|
+    creds = {
+      host: @switch.ipaddress,
+      community: @switch.community
+    }
+    snmp_walk creds, table_columns do |row|
         temp = ""
         row.each_with_index do |vb,i|
           if i == 0
@@ -28,7 +30,6 @@ class SwitchesController < ApplicationController
             @port[temp][:switch] = @switch
             @port[temp][:status] = "inactive"
           end
-        end
       end
     end
     @port.each do |port,info|
