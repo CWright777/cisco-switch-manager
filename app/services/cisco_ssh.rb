@@ -8,8 +8,8 @@ class Cisco_ssh < SSH
     unless @errors
       @ssh.cmd("en\r#{creds[:enable_password]}")
       @ssh.cmd("term len 0")
-      # @config = @ssh.cmd("show run")
-      # get_users
+      @config = @ssh.cmd("show run")
+       get_users
     else
       p @errors
     end
@@ -70,6 +70,6 @@ class Cisco_ssh < SSH
       #   user[:password] = line.match(/(password|secret).\d.*/)[0].split[2]
       #   @users.push(user)
       # end
-    end
+     end
   end
 end
