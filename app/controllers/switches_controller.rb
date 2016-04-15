@@ -109,13 +109,32 @@ class SwitchesController < ApplicationController
 
   private
     def switch_params
+      creds = {
+        host: params[:switch][:ipaddress],
+        community: params[:switch][:community]
+      }
+
+      table_columns = [
+        "1.3.6.1.4.1.9.3.6.3",#Switch Serial Number (Object Identifier)
+        "sysName"#Hostname
+      ]
+
       #Gets serial, name
-      SNMP::Manager.open(host: params[:switch][:ipaddress], community: params[:switch][:community]) do |manager|
-          manager.walk(["1.3.6.1.4.1.9.3.6.3","sysName"]) do |row|
-            @serial = "#{row[0].value}"
-            @name = "#{row[1].value}".split(".")[0]
-          end
+      snmp_walk creds, table_columns do |row|
+        @serial = "#{row[0].value}"
+        @name = "#{row[1].value}".split(".")[0]
       end
-      params.require(:switch).permit(:ipaddress,:user_name,:switch_password,:community, :enable_password).merge(user: current_user, contacted_at: DateTime.now, serial: @serial, name: @name)
+
+      params.require(:switch).permit(:ipaddress,
+                                     :user_name,
+                                     :switch_password,
+                                     :community,
+                                     :enable_password
+                                    ).merge(
+                                      user: current_user,
+                                      contacted_at: DateTime.now,
+                                      serial: @serial,
+                                      name: @name
+                                    )
     end
 end
