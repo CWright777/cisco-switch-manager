@@ -3,60 +3,79 @@ class SwitchesController < ApplicationController
   def index
   end
 
+  #Save switch and ports
   def create
-    @switch = Switch.create(switch_params)
-    # @switch = Switch.find(1)
-    @port = {}
+    #Create switch and ports
+    @switch, @ports = Switch.create(switch_params), {}
+
+    #SNMP column names
     table_columns = ["ifIndex","ifDescr", "ifHCInOctets","ifHCOutOctets","ifPhysAddress"]
+
+    #Credentials for polling SNMP
     creds = {
       host: @switch.ipaddress,
       community: @switch.community
     }
+
+    #Poll SNMP. through each column and get port information from switch. Parse information
+    #from tables_columns
     snmp_walk creds, table_columns do |row|
-        temp = ""
-        row.each_with_index do |vb,i|
-          if i == 0
-            @port["#{vb.value}"] = {}
-            @port["#{vb.value}"][:int_idx] = "#{vb.value}"
-            temp = "#{vb.value}"
-          elsif i == 1
-            @port[temp][:port_name] = "#{vb.value}"
-          elsif i == 2
-            @port[temp][:input] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
-          elsif i == 3
-            @port[temp][:output] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
-          else
-            @port[temp][:mac_address] = "#{vb.value.unpack("H2H2H2H2H2H2").join(":")}"
-            @port[temp][:switch] = @switch
-            @port[temp][:status] = "inactive"
-          end
+      temp = ""
+      row.each_with_index do |vb,i|
+        if i == 0
+          @ports["#{vb.value}"] = {}
+          @ports["#{vb.value}"][:int_idx] = "#{vb.value}"
+          temp = "#{vb.value}"
+        elsif i == 1
+          @ports[temp][:port_name] = "#{vb.value}"
+        elsif i == 2
+          @ports[temp][:input] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
+        elsif i == 3
+          @ports[temp][:output] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
+        else
+          @ports[temp][:mac_address] = "#{vb.value.unpack("H2H2H2H2H2H2").join(":")}"
+          @ports[temp][:switch] = @switch
+          @ports[temp][:status] = "inactive"
+        end
       end
     end
-    @port.each do |port,info|
+
+    #Delete port information from non-ethernet interfaces
+    @ports.each do |port,info|
       unless info[:port_name].include?("Eth")
-        @port.delete(port)
+        @ports.delete(port)
       end
     end
-    @port.each do |port,attributes|
+
+    #Create ports
+    @ports.each do |ports,attributes|
       Port.create(attributes)
     end
+
+    #Redirect back to dashboard
     redirect_to dashboard_index_path
   end   
 
   def show
+    #Switch model for simple form, used for switch hostname change
     @switch_model = Switch.new
+
+    #Find switch from id given in parameters
     @switch = Switch.find(params[:id])
+
+    #Get interface's operational/link status and interface index
+    creds = {
+      host: @switch.ipaddress,
+      community: @switch.community
+    }
     @ports = []
     @switch.ports.each do |port|
       @ports.append(port)
     end
     @port_status = {}
-    SNMP::Manager.open(:host => @switch.ipaddress, community: @switch.community) do |manager|
-      manager.walk(["ifIndex","ifOperStatus"]) do |row|
-        @port_status["#{row[0].value}"] = "#{row[1].value}"
-      end
+    snmp_walk creds, ["ifIndex","ifOperStatus"] do |row|
+      @port_status["#{row[0].value}"] = "#{row[1].value}"
     end
-    # .sort{|port| port["int_idx"] }.reverse
   end
 
   def update
