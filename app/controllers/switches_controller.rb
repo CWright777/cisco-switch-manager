@@ -7,7 +7,8 @@ class SwitchesController < ApplicationController
   def create
     #Create switch and ports
     @switch, @ports = Switch.create(switch_params), {}
-
+    p @switch
+    
     #SNMP column names
     table_columns = ["ifIndex","ifDescr", "ifHCInOctets","ifHCOutOctets","ifPhysAddress"]
 

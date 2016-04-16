@@ -5,6 +5,9 @@ class Switch < ActiveRecord::Base
   has_many :ports
 
   before_validation do
-    poll_switch_info self
+    switch_info = poll_switch_info self
+    self.serial = switch_info[:serial]
+    self.name = switch_info[:name]
+    self.contacted_at = switch_info[:contacted_at]
   end
 end

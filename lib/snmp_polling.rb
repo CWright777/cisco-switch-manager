@@ -19,9 +19,9 @@ module SNMP_Polling
       ]
 
       snmp_walk switch, table_columns do |row|
-        switch_info.serial = "#{row[0].value}"
-        switch_info.name = "#{row[1].value}".split(".")[0]
-        switch_info.contacted_at = DateTime.now
+        switch_info[:serial] = "#{row[0].value}"
+        switch_info[:name] = "#{row[1].value}".split(".")[0]
+        switch_info[:contacted_at] = DateTime.now
       end
       switch_info
     end
