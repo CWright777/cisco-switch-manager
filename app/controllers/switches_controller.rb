@@ -80,7 +80,12 @@ class SwitchesController < ApplicationController
 
   def update
     current_switch = Switch.find(params[:id])
-    ssh_info = {host: current_switch.ipaddress, user: current_switch.user_name, password: current_switch.switch_password,enable_password: current_switch.enable_password}
+    ssh_info = {
+      host: current_switch.ipaddress,
+      user: current_switch.user_name,
+      password: current_switch.switch_password,
+      enable_password: current_switch.enable_password
+    }
     ssh = Cisco_ssh.new ssh_info
     ssh.change_hostname params[:switch][:name]
     current_switch.update(name: params[:switch][:name])
@@ -90,7 +95,12 @@ class SwitchesController < ApplicationController
   def enable
     splitted = params[:id].split("h")
     current_switch = Switch.find(splitted[0])
-    ssh_info = {host: current_switch.ipaddress, user: current_switch.user_name, password: current_switch.switch_password,enable_password: current_switch.enable_password}
+    ssh_info = {
+      host: current_switch.ipaddress,
+      user: current_switch.user_name,
+      password: current_switch.switch_password,
+      enable_password: current_switch.enable_password
+    }
     ssh = Cisco_ssh.new ssh_info
     port = Port.find(splitted[1])
     ssh.enable_port port.port_name
@@ -100,7 +110,12 @@ class SwitchesController < ApplicationController
   def disable
     splitted = params[:id].split("h")
     current_switch = Switch.find(splitted[0])
-    ssh_info = {host: current_switch.ipaddress, user: current_switch.user_name, password: current_switch.switch_password,enable_password: current_switch.enable_password}
+    ssh_info = {
+      host: current_switch.ipaddress,
+      user: current_switch.user_name,
+      password: current_switch.switch_password,
+      enable_password: current_switch.enable_password
+    }
     ssh = Cisco_ssh.new ssh_info
     port = Port.find(splitted[1])
     ssh.disable_port port.port_name
@@ -109,32 +124,30 @@ class SwitchesController < ApplicationController
 
   private
     def switch_params
-      creds = {
-        host: params[:switch][:ipaddress],
-        community: params[:switch][:community]
-      }
+      #creds = {
+        #host: params[:switch][:ipaddress],
+        #community: params[:switch][:community]
+      #}
 
-      table_columns = [
-        "1.3.6.1.4.1.9.3.6.3",#Switch Serial Number (Object Identifier)
-        "sysName"#Hostname
-      ]
+      #table_columns = [
+        #"1.3.6.1.4.1.9.3.6.3",#Switch Serial Number (Object Identifier)
+        #"sysName"#Hostname
+      #]
 
       #Gets serial, name
-      snmp_walk creds, table_columns do |row|
-        @serial = "#{row[0].value}"
-        @name = "#{row[1].value}".split(".")[0]
-      end
+      #snmp_walk creds, table_columns do |row|
+        #@serial = "#{row[0].value}"
+        #@name = "#{row[1].value}".split(".")[0]
+      #end
 
-      params.require(:switch).permit(:ipaddress,
-                                     :user_name,
-                                     :switch_password,
-                                     :community,
-                                     :enable_password
-                                    ).merge(
-                                      user: current_user,
-                                      contacted_at: DateTime.now,
-                                      serial: @serial,
-                                      name: @name
-                                    )
+      params
+      .require(:switch)
+      .permit(:ipaddress,
+              :user_name,
+              :switch_password,
+              :community,
+              :enable_password
+             )
+      .merge(user: current_user)
     end
 end
