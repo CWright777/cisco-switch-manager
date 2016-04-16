@@ -1,0 +1,22 @@
+{
+  "name": "cisco-switch-manager",
+  "homepage": "https://github.com/CWright777/cisco-switch-manager",
+  "authors": [
+    "Cliff Wright <clifford@cliffordwright.com>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.4",
+    "angular-ui-router": "^0.2.18",
+    "bootstrap": "^3.3.6"
+  }
+}

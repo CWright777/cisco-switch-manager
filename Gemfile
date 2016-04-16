@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'angular-rails-templates'
 gem 'gmaps4rails'
 gem 'materialize-sass'
 gem 'sickest_gem', git:'https://github.com/CWright777/demo_gem.git', require:'sickest_gem'

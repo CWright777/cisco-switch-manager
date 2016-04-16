@@ -1,38 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Floati-Cloud</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title>FlapperNews</title>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Fredoka%20One">
-
 </head>
-<body>
-  <script type="text/javascript">
-    $(document).ready(function(){
-      <%= yield :jquery %>
-    });
-  </script>
-	<% if current_user %>
-		<div id="header">
-      <div class="row">
-        <h2 class="col s9">FlowtieCloud</h2>
-        <p class="col s1">Hi <%=current_user.first_name%>!</p>
-        <p class="col s1"><a href="#">My Profile</a></p>
-        <p class="col s1"><a href="#">Sign out</a></p>
-      </div>
-    </div>
-    <ul class="side-nav fixed offset_nav_top" style="position: absolute">
-      <li><a href="/dashboard">Switch</a></li>
-      <li><a href="/map">Net Map</a></li>
-      <li><a href="#!">Help</a></li>
-    </ul>
-
-  <% end %>
+<body ng-app="flapperNews">
   <div class="row">
-    <div id="main" class="col s11 offset-s1 "><%= yield %></div>
+    <div class="col-md-6 col-md-offset-3">
+      <ui-view></ui-view>
+    </div>
   </div>
+
 </body>
 </html>

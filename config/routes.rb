@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'sessions#index'
+  root to: 'application#angular'
   get 'switch/disable/(:id)' => 'switches#disable'
   get 'switch/enable/(:id)' => 'switches#enable'
   resources :sessions, only: [:create,:destroy]
