@@ -2,6 +2,7 @@ angular.module('flapperNews')
 .controller('MainCtrl', [
 '$scope',
 function($scope){
+  console.log('o')
   $scope.test = 'Hello world!';
   $scope.posts = [
     {title: 'post 1', upvotes: 5},
