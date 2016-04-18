@@ -1,9 +1,11 @@
 source 'https://rubygems.org'
+gem 'angular-rails-templates'
 gem 'gmaps4rails'
-gem 'materialize-sass'
 gem 'sickest_gem', git:'https://github.com/CWright777/demo_gem.git', require:'sickest_gem'
 gem 'net-ssh', '~>2.9'
+gem 'devise', '~> 3.4.0'
 gem 'net-ssh-telnet'
+gem 'angular_rails_csrf'
 gem 'snmp'
 gem 'rufus-scheduler'
 gem 'figaro'
@@ -29,6 +31,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+source "https://rails-assets.org" do
+  gem "rails-assets-angular-devise"
+end
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
