@@ -5,10 +5,10 @@ angular.module('flapperNews', ['ui.router', 'templates','Devise'])
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('home', {
-      url: '/home',
-      templateUrl: 'home/_home.html',
-      controller: 'MainCtrl'
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'dashboard/_dashboard.html',
+      controller: 'dashboardCtrl'
     })
     .state('posts', {
       url: '/posts/{id}',
@@ -21,7 +21,7 @@ function($stateProvider, $urlRouterProvider) {
       controller: 'AuthCtrl',
       onEnter: ['$state', 'Auth', function($state, Auth) {
         Auth.currentUser().then(function (){
-          $state.go('home');
+          $state.go('dashboard');
         })
       }]
     })
@@ -36,5 +36,5 @@ function($stateProvider, $urlRouterProvider) {
       }]
     });
 
-  $urlRouterProvider.otherwise('home');
+  $urlRouterProvider.otherwise('dashboard');
 }])
