@@ -3,9 +3,20 @@ angular.module('flapperNews')
 '$scope',
 '$state',
 'Auth',
-function($scope,$state,Auth){
+'Switch',
+function($scope,$state,Auth,Switch){
+  Auth.currentUser().then(function(user){
+    $scope.user = user
+  })
 
-  console.log(Auth)
+  Auth.currentUser().then(function (user){
+      $scope.user = user;
+      console.log(user)
+      Switch.show(user.id,function(switches){
+        console.log(switches)
+      })
+  });
+
   //$scope.test = 'Hello world!';
   //$scope.posts = [
     //{title: 'post 1', upvotes: 5},

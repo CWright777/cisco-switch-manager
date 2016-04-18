@@ -1,6 +1,9 @@
 angular.module('flapperNews')
-.service('Switch', [function($http){
-  this.show = function(callback){
-    $http.get('/switches/')
+.service('Switch', ['$http',function($http){
+  this.show = function(userId,callback){
+    console.log(userId)
+    $http.get('/dashboard/' + userId + '.json').success(function(switches){
+      callback(switches)
+    })
   }
 }])
