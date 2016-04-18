@@ -12,10 +12,16 @@ function($scope,$state,Auth,Switch){
   Auth.currentUser().then(function (user){
       $scope.user = user;
       console.log(user)
-      Switch.show(user.id,function(switches){
+      Switch.show(function(switches){
         console.log(switches)
       })
   });
+
+  $scope.addSwitch = function(){
+    Switch.create($scope.newSwitch,function(){
+      console.log('Switch created')
+    })
+  }
 
   //$scope.test = 'Hello world!';
   //$scope.posts = [

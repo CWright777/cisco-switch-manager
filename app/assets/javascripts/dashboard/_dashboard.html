@@ -1,1 +1,15 @@
 Yo its the dashboard
+
+<form ng-submit="addSwitch()">
+  <label>IP address:</label>
+  <input type="text" ng-model="newSwitch.ipaddress"><br>
+  <label>User Name:</label>
+  <input type="text" ng-model="newSwitch.user_name"><br>
+  <label>Switch  SSH Password:<label>
+  <input type="text" ng-model="newSwitch.switch_password"><br>
+  <label>Switch Enable Password:<label>
+  <input type="text" ng-model="newSwitch.community"><br>
+  <label>Switch Community Password:<label>
+  <input type="text" ng-model="newSwitch.enable_password"><br>
+  <input type="submit" value="Add Switch">
+</form>

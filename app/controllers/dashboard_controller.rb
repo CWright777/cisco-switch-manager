@@ -1,8 +1,7 @@
 class DashboardController < ApplicationController
   before_filter :authenticate_user!
   def show
-    p 4
-    SNMP::MIB.import_module("/Users/CDawg/Documents/Coding_Dojo_Assignments/Project/MerakiClone/OLD-CISCO-INTERFACES-MIB.oid")
+    #SNMP::MIB.import_module("/Users/CDawg/Documents/Coding_Dojo_Assignments/Project/MerakiClone/OLD-CISCO-INTERFACES-MIB.oid")
     @switches = current_user.switches.all
     @properties = {}
     @switches.each do |switch|
