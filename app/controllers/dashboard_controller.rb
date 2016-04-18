@@ -25,5 +25,6 @@ class DashboardController < ApplicationController
         end
       end
     end
+    respond_with @switches
   end
 end

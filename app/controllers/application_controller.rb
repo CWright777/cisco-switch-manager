@@ -10,10 +10,6 @@ class ApplicationController < ActionController::Base
     render 'layouts/application'
   end
 
-  def current_user
-    User.find(session[:user_id]) if session[:user_id]
-  end
-  
   def active_icon status
     if status == "active"
       icon = "thumb_up"
