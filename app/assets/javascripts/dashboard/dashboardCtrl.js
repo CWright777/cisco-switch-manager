@@ -19,8 +19,8 @@ function($scope,$state,Auth,Switch){
   });
 
   $scope.addSwitch = function(){
-    Switch.create($scope.newSwitch,function(){
-      console.log('Switch created')
+    Switch.create($scope.newSwitch,function(data){
+      $scope.switches = data.switches
     })
   }
 

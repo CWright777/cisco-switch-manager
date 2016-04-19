@@ -21,13 +21,15 @@ module SNMP_Polling
     end
 
     def poll_switch_input_bandwidth switch
-      table_columns = ["ifHCInOctets","ifDescr"]
+      table_columns = [
+        "ifHCInOctets",
+        "ifDescr"
+      ]
+
       switch.bandwidth_in = []
-      SNMP::Manager.open(:host => switch.ipaddress, community: switch.community) do |manager|
-        manager.walk(table_columns) do |row|
+        snmp_walk switch, table_columns do |row|
           row.each { |vb|  switch.bandwidth_in.push vb.value}
         end
-      end
     end
 
     def poll_switch_info switch
@@ -57,6 +59,7 @@ module SNMP_Polling
       ]
 
       snmp_walk switch, table_columns do |row|
+        @ports = {}
         temp = ""
         row.each_with_index do |vb,i|
           if i == 0
@@ -71,9 +74,19 @@ module SNMP_Polling
             @ports[temp][:output] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
           else
             @ports[temp][:mac_address] = "#{vb.value.unpack("H2H2H2H2H2H2").join(":")}"
-            @ports[temp][:switch] = @switch
+            @ports[temp][:switch] = switch
             @ports[temp][:status] = "inactive"
           end
+        end
+
+        #Delete port information from non-ethernet interfaces
+        @ports.each do |port,info|
+          unless info[:port_name].include?("Eth")
+            @ports.delete(port)
+          end
+        end
+        @ports.each do |port,attributes|
+          here = Port.create(attributes)
         end
       end
     end

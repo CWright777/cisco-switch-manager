@@ -14,54 +14,13 @@ class SwitchesController < ApplicationController
   #Save switch and ports
   def create
     #Create switch and ports
-    @switch, @ports = Switch.create(switch_params), {}
-    
-    #SNMP column names
-    table_columns = ["ifIndex","ifDescr", "ifHCInOctets","ifHCOutOctets","ifPhysAddress"]
-
-    #Poll SNMP. through each column and get port information from switch. Parse information
-    #from tables_columns
-    snmp_walk @switch, table_columns do |row|
-      temp = ""
-      row.each_with_index do |vb,i|
-        if i == 0
-          @ports["#{vb.value}"] = {}
-          @ports["#{vb.value}"][:int_idx] = "#{vb.value}"
-          temp = "#{vb.value}"
-        elsif i == 1
-          @ports[temp][:port_name] = "#{vb.value}"
-        elsif i == 2
-          @ports[temp][:input] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
-        elsif i == 3
-          @ports[temp][:output] = Integer("#{vb.value}") if "#{vb.value}" != "noSuchInstance"
-        else
-          @ports[temp][:mac_address] = "#{vb.value.unpack("H2H2H2H2H2H2").join(":")}"
-          @ports[temp][:switch] = @switch
-          @ports[temp][:status] = "inactive"
-        end
-      end
-    end
-
-    #Delete port information from non-ethernet interfaces
-    @ports.each do |port,info|
-      unless info[:port_name].include?("Eth")
-        @ports.delete(port)
-      end
-    end
-
-    #Create ports
-    @ports.each do |ports,attributes|
-      Port.create(attributes)
-    end
-
-    
-    respond_with 3
+    @switch = Switch.create(switch_params)
+    redirect_to switches_path
   end   
 
   def show
     #Switch model for simple form, used for switch hostname change
     @switch_model = Switch.new
-
     #Find switch from id given in parameters
     @switch = Switch.find(params[:id])
 

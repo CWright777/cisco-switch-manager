@@ -6,5 +6,5 @@ json.switches @switches do |switch|
   json.activePorts switch.active_ports
   json.totalPorts switch.ports.count
   json.bandwidthIn switch.bandwidth_in
-  json.upTime switch.up_time
+  json.upTime distance_of_time_in_words(switch.up_time.round / 100)
 end

@@ -11,7 +11,18 @@ class Switch < ActiveRecord::Base
     self.name = switch_info[:name]
     self.contacted_at = switch_info[:contacted_at]
   end
+
+  after_create do
+    create_ports
+  end
+
   
+  def create_ports
+    poll_ports_info self
+    #ports.each do |ports,attributes|
+      #Port.create(atributes)
+    #end
+  end
   def get_up_time
     poll_switch_uptime self
   end
