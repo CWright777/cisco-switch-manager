@@ -11,6 +11,25 @@ module SNMP_Polling
       end
     end
 
+    def poll_switch_uptime switch
+      table_columns = [
+        "sysUpTime"
+      ]
+      snmp_walk switch, table_columns do |row|
+        row.each { |vb|  switch.up_time =  vb.value.instance_variable_get("@value") }
+      end
+    end
+
+    def poll_switch_input_bandwidth switch
+      table_columns = ["ifHCInOctets","ifDescr"]
+      switch.bandwidth_in = []
+      SNMP::Manager.open(:host => switch.ipaddress, community: switch.community) do |manager|
+        manager.walk(table_columns) do |row|
+          row.each { |vb|  switch.bandwidth_in.push vb.value}
+        end
+      end
+    end
+
     def poll_switch_info switch
       switch_info = {}
       table_columns = [

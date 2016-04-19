@@ -53,8 +53,8 @@ class SwitchesController < ApplicationController
       Port.create(attributes)
     end
 
-    #Redirect back to dashboard
-    redirect_to dashboard_index_path
+    
+    respond_with 3
   end   
 
   def show

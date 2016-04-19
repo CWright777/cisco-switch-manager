@@ -13,3 +13,24 @@ Yo its the dashboard
   <input type="text" ng-model="newSwitch.enable_password"><br>
   <input type="submit" value="Add Switch">
 </form>
+
+<table>
+  <tr>
+    <th></th>
+    <th>Status</th>
+    <th>Name</th>
+    <th>Alerts</th>
+    <th>Contacted At</th>
+    <th>Active Port</th>
+    <th>Uptime</th>
+  </tr>
+  <tr ng-repeat="switch in switches">
+    <td></td>
+    <td>TODO</td>
+    <td>{{switch.name}}</td>
+    <td></td>
+    <td>{{switch.contacted_at}}</td>
+    <td>{{switch.activePorts}} / {{switch.totalPorts}}</td>
+  </tr>
+</table>
+{{switches}}

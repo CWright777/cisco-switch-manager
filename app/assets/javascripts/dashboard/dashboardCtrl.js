@@ -12,8 +12,9 @@ function($scope,$state,Auth,Switch){
   Auth.currentUser().then(function (user){
       $scope.user = user;
       console.log(user)
-      Switch.show(function(switches){
-        console.log(switches)
+      Switch.show(function(data){
+        console.log(data)
+        $scope.switches = data.switches
       })
   });
 
