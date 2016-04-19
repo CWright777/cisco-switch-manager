@@ -1,26 +1,27 @@
 class SwitchesController < ApplicationController
 
   def index
+    @switches = current_user.switches.all
+    @switches.each do |switch|
+      switch.get_up_time
+      switch.get_input_bandwidth
+    end
+    respond_to do |format|
+      format.json {render :index}
+    end
   end
 
   #Save switch and ports
   def create
     #Create switch and ports
     @switch, @ports = Switch.create(switch_params), {}
-    p @switch
     
     #SNMP column names
     table_columns = ["ifIndex","ifDescr", "ifHCInOctets","ifHCOutOctets","ifPhysAddress"]
 
-    #Credentials for polling SNMP
-    creds = {
-      host: @switch.ipaddress,
-      community: @switch.community
-    }
-
     #Poll SNMP. through each column and get port information from switch. Parse information
     #from tables_columns
-    snmp_walk creds, table_columns do |row|
+    snmp_walk @switch, table_columns do |row|
       temp = ""
       row.each_with_index do |vb,i|
         if i == 0

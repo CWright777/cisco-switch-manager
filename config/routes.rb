@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   get 'switch/enable/(:id)' => 'switches#enable'
   resources :sessions, only: [:create,:destroy]
   resources :users
-  resources :switches
+  resources :switches, :defaults => { :format => :json }
   resources :dashboard
 
   # Example of regular route:
