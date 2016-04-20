@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 gem 'angular-rails-templates'
+gem 'material_icons'
 gem 'rails-angular-material'
 gem 'net-ssh', '~>2.9'
 gem 'devise', '~> 3.4.0'
