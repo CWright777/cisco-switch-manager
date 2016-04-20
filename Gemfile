@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 gem 'angular-rails-templates'
-gem 'gmaps4rails'
-gem 'sickest_gem', git:'https://github.com/CWright777/demo_gem.git', require:'sickest_gem'
+gem 'rails-angular-material'
 gem 'net-ssh', '~>2.9'
 gem 'devise', '~> 3.4.0'
 gem 'net-ssh-telnet'
