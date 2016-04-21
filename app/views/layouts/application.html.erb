@@ -10,7 +10,14 @@
 <body ng-app="networkApp">
   <md-content>
     <div ng-include="'_nav.html'"></div>
-    <ui-view></ui-view>
+    <section layout="row" flex>
+      <div ng-include="'_sidenav.html'" class="work"></div>
+      <md-content flex layout-padding>
+        <div layout="column" layout-fill layout-align="top center">
+          <ui-view></ui-view>
+        </div>
+      </md-content>
+    </section>
   </md-content>
 </body>
 </html>
