@@ -1,4 +1,4 @@
-angular.module('flapperNews')
+angular.module('networkApp')
 .service('Switch', ['$http',function($http){
   this.show = function(callback){
     $http.get('/switches').success(function(switches){

@@ -1,4 +1,4 @@
-angular.module('flapperNews', [
+angular.module('networkApp', [
 'ui.router',
 'templates',
 'Devise',
