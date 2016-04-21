@@ -2,17 +2,22 @@
 <html>
 <head>
   <title>FlapperNews</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
-<body ng-app="flapperNews">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <div ng-include="'nav/_nav.html'"></div>
-      <ui-view></ui-view>
-    </div>
-  </div>
-
+<body ng-app="networkApp">
+  <md-content>
+    <div ng-include="'_nav.html'"></div>
+    <section layout="row" flex>
+      <div ng-include="'_sidenav.html'" class="work"></div>
+      <md-content flex layout-padding>
+        <div layout="column" layout-fill layout-align="top center">
+          <ui-view></ui-view>
+        </div>
+      </md-content>
+    </section>
+  </md-content>
 </body>
 </html>
