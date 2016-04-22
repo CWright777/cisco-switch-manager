@@ -4,7 +4,8 @@ angular.module('networkApp')
 '$state',
 'Auth',
 'Switch',
-function($scope,$state,Auth,Switch){
+'ngMaterial',
+function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
   Auth.currentUser().then(function(user){
     $scope.user = user
   })
@@ -24,33 +25,28 @@ function($scope,$state,Auth,Switch){
     })
   }
 
-  //$scope.test = 'Hello world!';
-  //$scope.posts = [
-    //{title: 'post 1', upvotes: 5},
-    //{title: 'post 2', upvotes: 2},
-    //{title: 'post 3', upvotes: 15},
-    //{title: 'post 4', upvotes: 9},
-    //{title: 'post 5', upvotes: 4}
-  //];
-  //$scope.addPost = function(){
-    //$scope.posts.push({title: 'A new post!', upvotes: 0});
-  //};
+  //Add Switch Dialog Prompt
+  $scope.status = '  ';
+  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-  //$scope.us = function(){
-    //console.log(3)
-  //}
-  //$scope.incrementUpvotes = function(post) {
-    //console.log(3)
-    //post.upvotes += 1;
-  //};
-  //$scope.addPost = function(){
-    //if(!$scope.title || $scope.title === '') { return; }
-    //$scope.posts.push({
-        //title: $scope.title,
-        //link: $scope.link,
-        //upvotes: 0
-      //});
-    //$scope.title = '';
-    //$scope.link = '';
-  //};
+  $scope.showPrompt = function(ev) {
+  console.log(4)
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.prompt()
+          .clickOutsideToClose(true)
+          .title('What would you name your dog?')
+          .textContent('Bowser is a common name.')
+          .placeholder('dog name')
+          .ariaLabel('Dog name')
+          .targetEvent(ev)
+          .ok('Okay!')
+          .cancel('I\'m a cat person');
+
+    $mdDialog.show(confirm).then(function(result) {
+      $scope.status = 'You decided to name your dog ' + result + '.';
+    }, function() {
+      $scope.status = 'You didn\'t name your dog.';
+    });
+  };
+
 }]);

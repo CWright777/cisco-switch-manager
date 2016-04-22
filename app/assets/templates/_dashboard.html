@@ -33,3 +33,15 @@
   </tr>
 </table>
 {{switches}}
+  <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
+    <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
+      Prompt Dialog
+    </md-button>
+  </div>
+  
+
+  <div ng-if="status" id="status">
+    <b layout="row" layout-align="center center" class="md-padding">
+      {{status}}
+    </b>
+  </div>
