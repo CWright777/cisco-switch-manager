@@ -1,16 +1,8 @@
-<form ng-submit="addSwitch()">
-  <label>IP address:</label>
-  <input type="text" ng-model="newSwitch.ipaddress"><br>
-  <label>User Name:</label>
-  <input type="text" ng-model="newSwitch.user_name"><br>
-  <label>Switch  SSH Password:<label>
-  <input type="text" ng-model="newSwitch.switch_password"><br>
-  <label>Switch Enable Password:<label>
-  <input type="text" ng-model="newSwitch.community"><br>
-  <label>Switch Community Password:<label>
-  <input type="text" ng-model="newSwitch.enable_password"><br>
-  <input type="submit" value="Add Switch">
-</form>
+<div layout="row" layout-align="end">
+  <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" >
+    Add Switch
+  </md-button>
+</div>
 
 <table>
   <tr>
@@ -33,15 +25,3 @@
   </tr>
 </table>
 {{switches}}
-  <div class="dialog-demo-content" layout="row" layout-wrap="" layout-margin="" layout-align="center">
-    <md-button class="md-primary md-raised" ng-click="showPrompt($event)">
-      Prompt Dialog
-    </md-button>
-  </div>
-  
-
-  <div ng-if="status" id="status">
-    <b layout="row" layout-align="center center" class="md-padding">
-      {{status}}
-    </b>
-  </div>

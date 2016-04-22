@@ -4,7 +4,8 @@ angular.module('networkApp')
 '$state',
 'Auth',
 'Switch',
-'ngMaterial',
+'$mdDialog',
+'$mdMedia',
 function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
   Auth.currentUser().then(function(user){
     $scope.user = user
@@ -27,26 +28,37 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
 
   //Add Switch Dialog Prompt
   $scope.status = '  ';
-  $scope.customFullscreen = $mdMedia('xs') || $mdMedia('sm');
 
-  $scope.showPrompt = function(ev) {
-  console.log(4)
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.prompt()
-          .clickOutsideToClose(true)
-          .title('What would you name your dog?')
-          .textContent('Bowser is a common name.')
-          .placeholder('dog name')
-          .ariaLabel('Dog name')
-          .targetEvent(ev)
-          .ok('Okay!')
-          .cancel('I\'m a cat person');
+    $scope.showAdvanced = function(ev) {
+      var useFullScreen = $scope.customFullscreen;
 
-    $mdDialog.show(confirm).then(function(result) {
-      $scope.status = 'You decided to name your dog ' + result + '.';
-    }, function() {
-      $scope.status = 'You didn\'t name your dog.';
-    });
-  };
+      $mdDialog.show({
+        controller: DialogController,
+        templateUrl: '_newSwitchForm.html',
+        parent: angular.element(document.body),
+        targetEvent: ev,
+        clickOutsideToClose:true,
+        fullscreen: useFullScreen
+      })
+      .then(function(answer) {
+        $scope.status = 'You said the information was "' + answer + '".';
+      }, function() {
+        $scope.status = 'You cancelled the dialog.';
+      });
+    };
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
 
 }]);

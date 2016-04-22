@@ -1,9 +1,12 @@
 /*
-*= require angular-material
 *= require_tree .
 *= require_tree ../../../vendor/assets/bower_components/.
 */
 .work {
   position:relative;
   height:93vh;
+}
+
+h2 {
+  padding: 0px;
 }
