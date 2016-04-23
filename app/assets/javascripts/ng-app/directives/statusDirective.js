@@ -12,10 +12,9 @@ angular.module('networkApp')
         //show happ face else unhappy
         scope.$watch(attrs.displayStatusIcon, function(value){
           if(Date.parse(value) > Date.parse(date)){
-            element.html("<md-icon class='ng-scope material-icons' style='color:blue'>sentiment_very_satisfied</md-icon>")
+            element.html("<md-icon class='ng-scope material-icons' style='color:#7ac142;'>sentiment_very_satisfied</md-icon>")
           } else {
-            element.html("<md-icon class='ng-scope material-icons'>sentiment_very_dissatisfied</md-icon>")
-            console.log(value)
+            element.html("<md-icon style='color:red' class='ng-scope material-icons'>sentiment_very_dissatisfied</md-icon>")
           }
         })
       }
