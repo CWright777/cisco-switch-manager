@@ -16,7 +16,7 @@
   </tr>
   <tr ng-repeat="switch in switches">
     <td></td>
-    <td>TODO</td>
+    <td><span display-status-icon="switch.contacted_at">f</span></td>
     <td>{{switch.name}}</td>
     <td></td>
     <td>{{switch.contacted_at}}</td>
@@ -24,4 +24,6 @@
     <td>{{switch.upTime}}</td>
   </tr>
 </table>
+          <md-icon>sentiment_very_satisfied</md-icon>
 {{switches}}
+

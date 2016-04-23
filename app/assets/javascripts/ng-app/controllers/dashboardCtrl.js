@@ -6,29 +6,20 @@ angular.module('networkApp')
 'Switch',
 '$mdDialog',
 '$mdMedia',
-function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
-  Auth.currentUser().then(function(user){
-    $scope.user = user
-  })
-
-  Auth.currentUser().then(function (user){
-      $scope.user = user;
-      console.log(user)
+'$interval',
+function($scope,$state,Auth,Switch, $mdDialog, $mdMedia,$interval){
+  getAllSwitchInfo = function(){
       Switch.show(function(data){
-        console.log(data)
         $scope.switches = data.switches
       })
-  });
-
-  $scope.addSwitch = function(){
-    Switch.create($scope.newSwitch,function(data){
-      $scope.switches = data.switches
-    })
   }
 
-  //Add Switch Dialog Prompt
-  $scope.status = '  ';
+  Auth.currentUser().then(function (user){
+   getAllSwitchInfo()
+   $scope.user = user;
+  });
 
+  //Add Switch Dialog Prompt
     $scope.showAdvanced = function(ev) {
       var useFullScreen = $scope.customFullscreen;
 
@@ -40,10 +31,13 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
         clickOutsideToClose:true,
         fullscreen: useFullScreen
       })
-      .then(function(answer) {
-        $scope.status = 'You said the information was "' + answer + '".';
+      .then(function(result) {
+        //Add switch info to user
+        Switch.create(result,function(data){
+          $scope.switches = data.switches
+        })
       }, function() {
-        $scope.status = 'You cancelled the dialog.';
+        //When user clicks cancel
       });
     };
 
@@ -61,4 +55,7 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia){
     };
   }
 
+  $interval(function(){
+    getAllSwitchInfo()
+  },30000)
 }]);

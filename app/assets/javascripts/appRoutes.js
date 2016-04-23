@@ -2,7 +2,7 @@ angular.module('appRoutes', [])
 .config([
 '$stateProvider',
 '$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
+function($stateProvider, $urlRouterProvider, $mdIconProvider) {
   $stateProvider
     .state('dashboard', {
       url: '/dashboard',
@@ -31,4 +31,5 @@ function($stateProvider, $urlRouterProvider) {
     });
 
   $urlRouterProvider.otherwise('dashboard');
+
 }])
