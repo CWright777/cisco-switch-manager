@@ -1,7 +1,23 @@
 <div layout="row" layout-align="start start">
   <h2 class='md-title'>{{switchData.name}}</h2>
 </div>
-<h2 class='md-title'>Ports</h2>
+<div ng-switch="moduleState">
+  <div ng-switch-when="link">
+    <p ng-click="revealConfigure()">Edit Configuration</p>
+    <p>Serial: {{switchData.serial}}</p>
+    <p>LAN IP: {{switchData.ipAddress}}</p>
+  </div>
+  <div ng-switch-when="configure">
+    <div layout="row" layout-align="start start">
+      <label >Name</label>
+      <input type="text"> 
+    </div>
+    <p>Serial: {{switchData.serial}}</p>
+    <p>LAN IP: {{switchData.ipAddress}}</p>
+    
+  </div>
+</div>
+<h2 class='subhead'>Ports</h2>
 <table class="tables">
   <tr>
     <thead>
@@ -17,7 +33,7 @@
     <tr ng-repeat="port in switchData.ports">
       <td>{{port.status}}</td>
       <td></td>
-      <td>{{port.name}}</td>
+      <td>{{port.port_name}}</td>
       <td>{{port.mac_address}}</td>
       <td>{{port.input}}</td>
       <td>{{port.output}}</td>
