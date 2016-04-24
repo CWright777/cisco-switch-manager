@@ -2,7 +2,7 @@ require 'rufus-scheduler'
 
 scheduler = Rufus::Scheduler.new
 
-scheduler.every '20s' do
+scheduler.every '100s' do
   if Switch.all.none.is_a?(ActiveRecord::NullRelation)
     Switch.all.each do |switch|
       begin

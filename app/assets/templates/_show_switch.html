@@ -1,1 +1,27 @@
-json.switchId = switch.id
+<div layout="row" layout-align="start start">
+  <h2 class='md-title'>{{switchData.name}}</h2>
+</div>
+<h2 class='md-title'>Ports</h2>
+<table class="tables">
+  <tr>
+    <thead>
+      <th>Status</th>
+      <th>Action</th>
+      <th>Port Name</th>
+      <th>Mac Address</th>
+      <th>Received Bytes</th>
+      <th>Sent Bytes</th>
+    </thead>
+  </tr>
+  <tbody>
+    <tr ng-repeat="port in switchData.ports">
+      <td>{{port.status}}</td>
+      <td></td>
+      <td>{{port.name}}</td>
+      <td>{{port.mac_address}}</td>
+      <td>{{port.input}}</td>
+      <td>{{port.output}}</td>
+    </tr>
+  </tbody>
+</table> 
+{{switchData}}

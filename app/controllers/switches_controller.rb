@@ -38,6 +38,7 @@ class SwitchesController < ApplicationController
     snmp_walk creds, ["ifIndex","ifOperStatus"] do |row|
       @port_status["#{row[0].value}"] = "#{row[1].value}"
     end
+    p @switch
     respond_to do |format|
       format.json {render :show}
     end

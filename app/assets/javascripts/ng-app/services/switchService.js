@@ -14,6 +14,5 @@ angular.module('networkApp')
     $http.get('/switches/' + switchId).success(function(switchData){
       callback(switchData)
     })
-    
   }
 }])
