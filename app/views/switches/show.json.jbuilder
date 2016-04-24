@@ -1,0 +1,1 @@
+json.switchId = @switch.id

@@ -122,7 +122,6 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.2.5.1)
       sprockets-rails
-    rails-angular-material (1.0.5)
     rails-assets-angular (1.5.4)
     rails-assets-angular-devise (1.3.0)
       rails-assets-angular (>= 1.2.0, < 2)
@@ -218,7 +217,6 @@ DEPENDENCIES
   net-ssh (~> 2.9)
   net-ssh-telnet
   rails (= 4.2.5.1)
-  rails-angular-material
   rails-assets-angular-devise!
   rspec-rails
   rufus-scheduler

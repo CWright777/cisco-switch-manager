@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 gem 'angular-rails-templates'
-gem 'rails-angular-material'
 gem 'net-ssh', '~>2.9'
 gem 'devise', '~> 3.4.0'
 gem 'net-ssh-telnet'

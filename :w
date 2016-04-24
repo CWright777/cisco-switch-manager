@@ -1,10 +1,9 @@
-<div layout="row" layout-align="end end">
-    <h2 class=".md-title">Switches</h2>
+<div layout="row" layout-align="end">
+    <span class="md-title">Switches</span>
   <span flex></span>
-    
-    <md-button class="md-primary md-raised md-block" ng-click="showAdvanced($event)" >
-      Add Switch
-    </md-button>
+  <md-button class="md-primary md-raised" ng-click="showAdvanced($event)" >
+    Add Switch
+  </md-button>
 </div>
 
 <table class="tables">
@@ -22,7 +21,7 @@
     <tbody>
       <tr ng-repeat="switch in switches">
         <td><span display-status-icon="switch.contacted_at">f</span></td>
-        <td><a href="#/dashboard/{{switch.id}}">{{switch.name}}</a></td>
+        <td>{{switch.name}}</td>
         <td></td>
         <td>{{switch.contacted_at}}</td>
         <td>{{switch.activePorts}} / {{switch.totalPorts}}</td>

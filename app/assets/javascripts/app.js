@@ -13,11 +13,6 @@ angular.module('networkApp', [
 function($stateProvider, $urlRouterProvider) {
 
   $stateProvider
-    .state('dashboard', {
-      url: '/dashboard',
-      templateUrl: '_dashboard.html',
-      controller: 'dashboardCtrl'
-    })
     .state('login', {
       url: '/login',
       templateUrl: '_login.html',
@@ -37,7 +32,17 @@ function($stateProvider, $urlRouterProvider) {
           $state.go('dashboard');
         })
       }]
-    });
+    })
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: '_dashboard.html',
+      controller: 'dashboardCtrl'
+    })
+    .state('switch', {
+      url: '/dashboard/:switchId',
+      templateUrl: '_show_switch.html',
+      controller: 'showSwitchCtrl'
+    })
 
   $urlRouterProvider.otherwise('dashboard');
 }])

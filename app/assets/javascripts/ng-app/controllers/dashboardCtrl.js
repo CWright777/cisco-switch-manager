@@ -9,7 +9,7 @@ angular.module('networkApp')
 '$interval',
 function($scope,$state,Auth,Switch, $mdDialog, $mdMedia,$interval){
   getAllSwitchInfo = function(){
-      Switch.show(function(data){
+      Switch.index(function(data){
         $scope.switches = data.switches
       })
   }
@@ -19,6 +19,7 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia,$interval){
    $scope.user = user;
   });
 
+  
   //Add Switch Dialog Prompt
     $scope.showAdvanced = function(ev) {
       var useFullScreen = $scope.customFullscreen;

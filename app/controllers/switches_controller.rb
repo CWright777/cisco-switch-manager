@@ -20,7 +20,8 @@ class SwitchesController < ApplicationController
 
   def show
     #Switch model for simple form, used for switch hostname change
-    @switch_model = Switch.new
+    #@switch_model = Switch.new
+    
     #Find switch from id given in parameters
     @switch = Switch.find(params[:id])
 
@@ -36,6 +37,9 @@ class SwitchesController < ApplicationController
     @port_status = {}
     snmp_walk creds, ["ifIndex","ifOperStatus"] do |row|
       @port_status["#{row[0].value}"] = "#{row[1].value}"
+    end
+    respond_to do |format|
+      format.json {render :show}
     end
   end
 
@@ -85,22 +89,6 @@ class SwitchesController < ApplicationController
 
   private
     def switch_params
-      #creds = {
-        #host: params[:switch][:ipaddress],
-        #community: params[:switch][:community]
-      #}
-
-      #table_columns = [
-        #"1.3.6.1.4.1.9.3.6.3",#Switch Serial Number (Object Identifier)
-        #"sysName"#Hostname
-      #]
-
-      #Gets serial, name
-      #snmp_walk creds, table_columns do |row|
-        #@serial = "#{row[0].value}"
-        #@name = "#{row[1].value}".split(".")[0]
-      #end
-
       params
       .require(:switch)
       .permit(:ipaddress,

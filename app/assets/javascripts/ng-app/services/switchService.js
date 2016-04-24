@@ -1,6 +1,6 @@
 angular.module('networkApp')
 .service('Switch', ['$http',function($http){
-  this.show = function(callback){
+  this.index = function(callback){
     $http.get('/switches').success(function(switches){
       callback(switches)
     })
@@ -9,5 +9,11 @@ angular.module('networkApp')
     $http.post('/switches', newSwitch).success(function(switches){
       callback(switches)
     })
+  }
+  this.show = function(switchId,callback){
+    $http.get('/switches/' + switchId).success(function(switchData){
+      callback(switchData)
+    })
+    
   }
 }])
