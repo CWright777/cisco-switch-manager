@@ -4,26 +4,29 @@
   </md-button>
 </div>
 
-<table>
+<table class="tables">
+    
   <tr>
-    <th></th>
-    <th>Status</th>
-    <th>Name</th>
-    <th>Alerts</th>
-    <th>Contacted At</th>
-    <th>Active Port</th>
-    <th>Uptime</th>
+    <thead>
+      <th>Status</th>
+      <th>Name</th>
+      <th>Alerts</th>
+      <th>Contacted At</th>
+      <th>Active Port</th>
+      <th>Uptime</th>
+    </thead>
   </tr>
-  <tr ng-repeat="switch in switches">
-    <td></td>
-    <td><span display-status-icon="switch.contacted_at">f</span></td>
-    <td>{{switch.name}}</td>
-    <td></td>
-    <td>{{switch.contacted_at}}</td>
-    <td>{{switch.activePorts}} / {{switch.totalPorts}}</td>
-    <td>{{switch.upTime}}</td>
-  </tr>
+  </thead>
+    <tbody>
+      <tr ng-repeat="switch in switches">
+        <td><span display-status-icon="switch.contacted_at">f</span></td>
+        <td>{{switch.name}}</td>
+        <td></td>
+        <td>{{switch.contacted_at}}</td>
+        <td>{{switch.activePorts}} / {{switch.totalPorts}}</td>
+        <td>{{switch.upTime}}</td>
+      </tr>
+    </tbody>
 </table>
-          <md-icon>sentiment_very_satisfied</md-icon>
 {{switches}}
 
