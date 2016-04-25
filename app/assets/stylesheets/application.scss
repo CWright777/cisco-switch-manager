@@ -15,14 +15,13 @@
 
   td {
     border: none;
-    padding: 0px;
+    padding: 0 0 .5em 0;
 
     #chev-right {
       font-size: 14px;
       height: 14px;
       width: 14px;
     }
-    padding-bottom: .5em
   }
 
   h2 {
@@ -41,23 +40,49 @@
 
 .section-table {
   td {
-    padding: 0;
+    padding: 0 1em .4em 0;
     border-bottom: none;
+    
+    a {
+      text-align: left;
+      text-decoration: underline;;
+    }
 
     &:first-child {
       text-align: left;
-      width: 100%;
     }
 
     &:nth-child(odd) {
-      width: 10em;
+      width: 11.4em;
       text-align: right;
     }
 
+    &:nth-child(even){
+      padding: 0 0 .4em 0;
+      margin-left: 1em
+    }
   }
+
   h2 {
     margin: 0px;
+    text-align: left;
+    margin-left: .3em;
     padding: 0px;
+  }
+  .action {
+    margin-left: 7em;
+    .md-button {
+      margin-left: 0em;
+    }
+  }
+
+  #note-area {
+    width: 20em;
+  }
+
+  #h-line {
+    border-bottom: 1px solid gray;
+    padding-right: 23em;
   }
 }
 

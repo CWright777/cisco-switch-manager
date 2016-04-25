@@ -25,13 +25,13 @@
       <tbody>
         <tr>
           <td>
-            <h2>
-              Configuration | 
+            <h2 >
+              Configuration&nbsp&nbsp| 
             </h2>
           </td>
           <td>
             <a href="" ng-click="revealConfigure()">
-              &nbsp&nbspEdit Configuration
+              Edit Configuration
             </a>
           </td>
         </tr>
@@ -45,7 +45,7 @@
         </tr>
         <tr>
           <td>
-            LAN IP: 
+            LAN IP:
           </td>
           <td>
             {{switchData.ipAddress}}
@@ -59,7 +59,7 @@
       <tbody>
         <tr>
           <td>
-            <h2>
+            <h2 id="h-line">
               Configuration
             </h2>
           </td>
@@ -69,7 +69,7 @@
               Name:
           </td>
           <td>
-            &nbsp <input style="display: inline-block" ng-model="name">
+            <input style="display: inline-block" ng-model="name">
           </td>
         </tr>
         <tr>
@@ -77,7 +77,9 @@
             Remove:
           </td>
           <td>
-            <md-button class="md-primary md-raised">Remove from dashboard</md-button>
+            <md-button style="margin:auto" class="md-primary md-raised">
+              Remove from Inventory
+            </md-button>
           </td>
         </tr>
         <tr>
@@ -85,7 +87,7 @@
             Serial:
           </td>
           <td>
-            &nbsp  {{switchData.serial}}
+            {{switchData.serial}}
           </td>
         </tr>
         <tr>
@@ -93,7 +95,22 @@
             LAN IP:
           </td>
           <td>
-            &nbsp  {{switchData.ipAddress}}
+           {{switchData.ipAddress}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Notes:
+          </td>
+          <td>
+            <textarea rows="7" id="note-area">
+            </textarea>
+          </td>
+        </tr>
+        <tr>
+          <td layout="row" class="action">
+            <md-button class="md-primary md-raised" ng-click="disappearConfigure()">Back</md-button>
+            <md-button class="md-primary md-raised">Save</md-button>
           </td>
         </tr>
       </tbody>

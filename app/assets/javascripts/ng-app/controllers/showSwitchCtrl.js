@@ -12,7 +12,10 @@ function($scope,$state,Switch,$stateParams){
   $scope.moduleState = 'link';
 
   $scope.revealConfigure = function(){
-    console.log('dads')
-    $scope.moduleState = 'configure'
+    $scope.moduleState = 'configure';
+  }
+
+  $scope.disappearConfigure = function(){
+    $scope.moduleState = 'link';
   }
 }])
