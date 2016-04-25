@@ -5,12 +5,12 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root to: 'application#angular'
-  get 'switch/disable/(:id)' => 'switches#disable'
-  get 'switch/enable/(:id)' => 'switches#enable'
-  resources :sessions, only: [:create,:destroy]
+  #get 'switch/disable/(:id)' => 'switches#disable'
+  #get 'switch/enable/(:id)' => 'switches#enable'
+  #resources :sessions, only: [:create,:destroy]
   resources :users
   resources :switches, :defaults => { :format => :json }
-  resources :dashboard
+  #resources :dashboard
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

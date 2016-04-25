@@ -2,45 +2,82 @@
 *= require_tree .
 *= require_tree ../../../vendor/assets/bower_components/.
 */
+.status-heading {
+  border-bottom: 1px solid #8c8c8c; }
+
+.breadcrumb {
+  table-layout: auto;
+  margin: 1em 0 0 0; }
+  .breadcrumb a {
+    text-decoration: underline; }
+  .breadcrumb td {
+    border: none;
+    padding: 0px; }
+    .breadcrumb td #chev-right {
+      font-size: 14px;
+      height: 14px;
+      width: 14px; }
+  .breadcrumb h2 {
+    margin: -.4em 0 0 0; }
+  .breadcrumb h2, .breadcrumb md-icon {
+    padding: 0px;
+    display: inline-block; }
+
+.title-line {
+  margin: 0px; }
+
+.section-table td {
+  padding: 0;
+  border-bottom: none; }
+  .section-table td:first-child {
+    text-align: left;
+    width: 100%; }
+  .section-table td:nth-child(odd) {
+    width: 10em;
+    text-align: right; }
+.section-table h2 {
+  margin: 0px;
+  padding: 0px; }
+
 .work {
   position: relative;
   height: 93vh; }
 
-.tables {
+.info-table {
   border: 1px solid gainsboro;
   border-radius: 70px;
   border-spacing: 0;
   width: 100%; }
-  .tables tbody {
+  .info-table tbody {
     background-color: #fbfbfb; }
-    .tables tbody tr:hover > td, .tables tbody tr:hover > th {
+    .info-table tbody tr:hover > td, .info-table tbody tr:hover > th {
       background-color: #eeeeee; }
-    .tables tbody tr:nth-child(even) {
+    .info-table tbody tr:nth-child(even) {
       background-color: #f6f6f6; }
-      .tables tbody tr:nth-child(even):hover > td {
+      .info-table tbody tr:nth-child(even):hover > td {
         background-color: #e9e9e9; }
-  .tables thead th {
+  .info-table thead th {
     background-color: white;
     border-bottom: 0;
     border-left: 1px solid gainsboro;
     padding: 0.75em 1em;
     text-align: left; }
-    .tables thead th:first-child {
+    .info-table thead th:first-child {
       width: 10em;
       text-align: center; }
-    .tables thead th:nth-child(5) {
+    .info-table thead th:nth-child(5) {
       text-align: right; }
-    .tables thead th:last-child {
+    .info-table thead th:last-child {
       text-align: center; }
-  .tables tbody {
+  .info-table tbody {
     background-color: #fbfbfb; }
-    .tables tbody td {
+    .info-table tbody td {
       border-left: 1px solid gainsboro;
       border-top: 1px solid gainsboro;
       padding: 0.75em 1em; }
-      .tables tbody td:first-child {
+      .info-table tbody td:first-child {
         text-align: center; }
-      .tables tbody td:nth-child(5) {
+      .info-table tbody td:nth-child(5) {
         text-align: right; }
-      .tables tbody td:last-child {
+      .info-table tbody td:last-child {
         text-align: center; }

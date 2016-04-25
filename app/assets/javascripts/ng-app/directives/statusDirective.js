@@ -6,7 +6,7 @@ angular.module('networkApp')
         var minutes=date.getMinutes();
         var seconds=date.getSeconds();
         var milliseconds=date.getMilliseconds();
-        date.setMinutes(minutes-1,seconds,milliseconds);
+        date.setMinutes(minutes-3,seconds,milliseconds);
 
         //If switch contacted within last minute
         //show happ face else unhappy

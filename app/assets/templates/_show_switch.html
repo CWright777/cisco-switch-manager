@@ -1,24 +1,107 @@
-<div layout="row" layout-align="start start">
-  <h2 class='md-title'>{{switchData.name}}</h2>
+<div layout="row" class="status-heading">
+  <table class="breadcrumb" flex="15">
+    <tbody>
+      <tr>
+        <td>
+          <a href="#/dashboard">Switches</a>
+        </td>
+        <td>
+          <md-icon id="chev-right">chevron_right</md-icon>
+        </td>
+        <td>
+          <span display-status-icon="switchData.contactedAt"></span>
+        </td>
+        <td>
+          <h2 class='md-display-1'>{{switchData.name}}</h2>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
+
 <div ng-switch="moduleState">
   <div ng-switch-when="link">
-    <p ng-click="revealConfigure()">Edit Configuration</p>
-    <p>Serial: {{switchData.serial}}</p>
-    <p>LAN IP: {{switchData.ipAddress}}</p>
+    <table class="section-table">
+      <tbody>
+        <tr>
+          <td>
+            <h2>
+              Configuration | 
+            </h2>
+          </td>
+          <td>
+            <a href="" ng-click="revealConfigure()">
+              &nbsp&nbspEdit Configuration
+            </a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Serial:
+          </td>
+          <td>
+            {{switchData.serial}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            LAN IP: 
+          </td>
+          <td>
+            {{switchData.ipAddress}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
   <div ng-switch-when="configure">
-    <div layout="row" layout-align="start start">
-      <label >Name</label>
-      <input type="text"> 
-    </div>
-    <p>Serial: {{switchData.serial}}</p>
-    <p>LAN IP: {{switchData.ipAddress}}</p>
-    
+    <table class="section-table">
+      <tbody>
+        <tr>
+          <td>
+            <h2>
+              Configuration
+            </h2>
+          </td>
+        </tr>
+        <tr>
+          <td>
+              Name:
+          </td>
+          <td>
+            &nbsp <input style="display: inline-block" ng-model="name">
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Remove:
+          </td>
+          <td>
+            <md-button class="md-primary md-raised">Remove from dashboard</md-button>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Serial:
+          </td>
+          <td>
+            &nbsp  {{switchData.serial}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            LAN IP:
+          </td>
+          <td>
+            &nbsp  {{switchData.ipAddress}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 <h2 class='subhead'>Ports</h2>
-<table class="tables">
+<table class="info-table">
   <tr>
     <thead>
       <th>Status</th>
