@@ -88,6 +88,12 @@ class SwitchesController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    p params
+    fail
+  end
+
+
   private
     def switch_params
       params

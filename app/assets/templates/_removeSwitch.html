@@ -1,0 +1,20 @@
+<md-dialog>
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2 style="color:white">Remove Switch?</h2>
+    </div>
+  </md-toolbar>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      Would you like to remove this switch from your dashboard?
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row">
+    <md-button ng-click="answer()">
+      Cancel
+    </md-button>
+    <md-button ng-click="answer(newSwitch)" style="margin-right:20px;">
+      Remove
+    </md-button>
+  </md-dialog-actions>
+</md-dialog>    

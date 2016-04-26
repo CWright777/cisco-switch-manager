@@ -56,7 +56,7 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia,$interval){
     };
   }
 
-  $interval(function(){
-    getAllSwitchInfo()
-  },300000)
+  //$interval(function(){
+    //getAllSwitchInfo()
+  //},300000)
 }]);
