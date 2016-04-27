@@ -68,6 +68,7 @@ function($scope,$state,Switch,$stateParams,$mdDialog, $mdMedia){
       Switch.show($stateParams.switchId,function(switchData){
         $scope.switchData = switchData;
         $scope.loaded = true;
+        $scope.switchInfo = {}
       })
     });
   };

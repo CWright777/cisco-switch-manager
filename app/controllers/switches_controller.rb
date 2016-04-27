@@ -50,8 +50,14 @@ class SwitchesController < ApplicationController
       enable_password: current_switch.enable_password
     }
     ssh = Cisco_ssh.new ssh_info
-    ssh.change_hostname params[:switch][:name]
-    current_switch.update(name: params[:switch][:name])
+    if params[:name]
+      ssh.change_hostname params[:name]
+      current_switch.update(name: params[:name])
+    end
+    p params
+    if params[:notes]
+      current_switch.update(notes: params[:notes])
+    end
     @switch = Switch.find(params[:id])
     respond_to do |format|
       format.json {render :index}

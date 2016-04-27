@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<div ng-switch="moduleState">
+<div ng-switch="moduleState" layout="row">
   <div ng-switch-when="link">
     <table class="section-table">
       <tbody>
@@ -56,6 +56,10 @@
           <td>
             {{switchData.ipAddress}}
           </td>
+        </tr>
+        <tr ng-show="switchData.notes">
+          <td>Notes:</td>
+          <td>{{switchData.notes}}</td>
         </tr>
       </tbody>
     </table>
@@ -109,7 +113,7 @@
             Notes:
           </td>
           <td>
-            <textarea ng-model="switchInfo.note" rows="7" id="note-area">
+            <textarea ng-model="switchInfo.notes" rows="7" id="note-area">
             </textarea>
           </td>
         </tr>
@@ -121,6 +125,9 @@
         </tr>
       </tbody>
     </table>
+  </div>
+  <div flex="noshrink" style="width: 65em">
+
   </div>
 </div>
 <h2 class='subhead'>Ports</h2>

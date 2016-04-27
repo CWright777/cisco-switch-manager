@@ -19,9 +19,6 @@ class Switch < ActiveRecord::Base
   
   def create_ports
     poll_ports_info self
-    #ports.each do |ports,attributes|
-      #Port.create(atributes)
-    #end
   end
   def get_up_time
     poll_switch_uptime self
