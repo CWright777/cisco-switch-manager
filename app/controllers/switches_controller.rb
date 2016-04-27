@@ -90,7 +90,11 @@ class SwitchesController < ApplicationController
 
   def destroy
     p params
-    fail
+    @switch = Switch.find(params[:id])
+    @switch.destroy
+    respond_to do |format|
+      format.json {render :index}
+    end
   end
 
 

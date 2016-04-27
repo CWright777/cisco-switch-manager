@@ -6,7 +6,7 @@ angular.module('networkApp')
 "$stateParams",
 '$mdDialog',
 '$mdMedia',
-function($scope,$state,Switch,$location,$stateParams,$mdDialog, $mdMedia){
+function($scope,$state,Switch,$stateParams,$mdDialog, $mdMedia){
   Switch.show($stateParams.switchId,function(switchData){
     $scope.switchData = switchData;
   })
@@ -36,7 +36,7 @@ function($scope,$state,Switch,$location,$stateParams,$mdDialog, $mdMedia){
     .then(function() {
       //Add switch info to user
       Switch.remove($stateParams.switchId,function(){
-        $location.path('/dashboard')
+        $state.go('dashboard')
       })
     }, function() {
       //When user clicks cancel
