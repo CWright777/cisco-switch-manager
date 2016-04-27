@@ -29,7 +29,7 @@ function($scope,$state,Auth,Switch, $mdDialog, $mdMedia,$interval){
         templateUrl: '_newSwitchForm.html',
         parent: angular.element(document.body),
         targetEvent: ev,
-        clickOutsideToClose:true,
+        clickOutsideToClose:false,
         fullscreen: useFullScreen
       })
       .then(function(result) {

@@ -7,8 +7,13 @@ angular.module('networkApp')
 '$mdDialog',
 '$mdMedia',
 function($scope,$state,Switch,$stateParams,$mdDialog, $mdMedia){
+  //Need to initiate variable for ng-model in table
+  $scope.switchInfo = {}
+  $scope.loaded = false;
+
   Switch.show($stateParams.switchId,function(switchData){
     $scope.switchData = switchData;
+    $scope.loaded = true;
   })
 
   $scope.moduleState = 'link';
@@ -56,4 +61,14 @@ function($scope,$state,Switch,$stateParams,$mdDialog, $mdMedia){
       $mdDialog.hide(answer);
     };
   }
+
+  $scope.saveInfo = function(){
+    $scope.loaded = false;
+    Switch.update($stateParams.switchId,$scope.switchInfo,function(switchdata){
+      Switch.show($stateParams.switchId,function(switchData){
+        $scope.switchData = switchData;
+        $scope.loaded = true;
+      })
+    });
+  };
 }])

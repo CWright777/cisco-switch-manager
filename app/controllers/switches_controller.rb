@@ -19,9 +19,6 @@ class SwitchesController < ApplicationController
   end   
 
   def show
-    #Switch model for simple form, used for switch hostname change
-    #@switch_model = Switch.new
-    
     #Find switch from id given in parameters
     @switch = Switch.find(params[:id])
 
@@ -55,7 +52,10 @@ class SwitchesController < ApplicationController
     ssh = Cisco_ssh.new ssh_info
     ssh.change_hostname params[:switch][:name]
     current_switch.update(name: params[:switch][:name])
-    redirect_to :back
+    @switch = Switch.find(params[:id])
+    respond_to do |format|
+      format.json {render :index}
+    end
   end
 
   def enable
@@ -89,7 +89,6 @@ class SwitchesController < ApplicationController
   end
 
   def destroy
-    p params
     @switch = Switch.find(params[:id])
     @switch.destroy
     respond_to do |format|

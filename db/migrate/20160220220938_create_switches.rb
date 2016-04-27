@@ -8,9 +8,8 @@ class CreateSwitches < ActiveRecord::Migration
       t.string :enable_password
       t.string :community
       t.string :serial
+      t.string :notes
       t.datetime :contacted_at
-      t.decimal  :latitude, :precision => 15, :scale => 10, :default => 0.0
-      t.decimal  :longitude, :precision => 15, :scale => 10, :default => 0.0
       t.references :user, index: true, foreign_key: true
       t.timestamps null: false
     end

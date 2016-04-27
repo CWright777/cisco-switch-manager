@@ -35,12 +35,11 @@ ActiveRecord::Schema.define(version: 20160417014623) do
     t.string   "enable_password"
     t.string   "community"
     t.string   "serial"
+    t.string   "notes"
     t.datetime "contacted_at"
-    t.decimal  "latitude",        precision: 15, scale: 10, default: 0.0
-    t.decimal  "longitude",       precision: 15, scale: 10, default: 0.0
     t.integer  "user_id"
-    t.datetime "created_at",                                              null: false
-    t.datetime "updated_at",                                              null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "switches", ["user_id"], name: "index_switches_on_user_id"

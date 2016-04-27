@@ -20,4 +20,9 @@ angular.module('networkApp')
       callback();
     });
   };
+  this.update = function(switchId,switchInfo,callback){
+    $http.patch('/switches/' + switchId, switchInfo).success(function(switchData){
+      callback(switchData);
+    })
+  }
 }]);
