@@ -1,5 +1,5 @@
 angular.module('networkApp')
-.controller('NavCtrl', [
+.controller('navCtrl', [
 '$scope',
 'Auth',
 function($scope, Auth, $timeout, $mdSidenav, $log){

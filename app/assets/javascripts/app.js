@@ -35,13 +35,44 @@ function($stateProvider, $urlRouterProvider) {
     })
     .state('dashboard', {
       url: '/dashboard',
-      templateUrl: '_dashboard.html',
-      controller: 'dashboardCtrl'
+      views: {
+        '@': {
+         templateUrl:'layout.html'
+        },
+        'header@dashboard' : {
+          templateUrl: '_nav.html',
+          controller: 'navCtrl'
+        },
+        'sidenav@dashboard' : {
+          templateUrl: '_sidenav.html',
+          controller: 'navCtrl'
+        },
+        'main@dashboard' : {
+          templateUrl: '_dashboard.html',
+          controller: 'dashboardCtrl'
+        }
+      }
     })
     .state('switch', {
       url: '/dashboard/:switchId',
-      templateUrl: '_show_switch.html',
-      controller: 'showSwitchCtrl'
+      views: {
+        '@': {
+          templateUrl:'layout.html'
+        },
+        'header@switch' : {
+          templateUrl: '_nav.html',
+          controller: 'navCtrl'
+        },
+        'sidenav@switch' : {
+          templateUrl: '_sidenav.html',
+          controller: 'navCtrl'
+        },
+        'main@switch' : {
+          templateUrl: '_show_switch.html',
+          controller: 'showSwitchCtrl'
+        }
+
+      }
     })
 
   $urlRouterProvider.otherwise('dashboard');

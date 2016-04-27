@@ -7,16 +7,6 @@
   <%= csrf_meta_tags %>
 </head>
 <body ng-app="networkApp">
-  <md-content>
-    <div ng-include="'_nav.html'"></div>
-    <section layout="row" flex>
-      <div ng-include="'_sidenav.html'" class="work"></div>
-      <md-content flex layout-padding>
-        <div layout="column" layout-fill>
-          <ui-view></ui-view>
-        </div>
-      </md-content>
-    </section>
-  </md-content>
+  <div ui-view></div>
 </body>
 </html>

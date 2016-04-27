@@ -1,27 +1,31 @@
 angular.module('networkApp')
 .directive('portIcon', function(){
-  var up = {
-    first:'small-piece',
-    third: 'large-piece'
-  }
-  var down = {
-    first: 'large-piece',
-    third:'small-piece'
-  }
+
+  var up = "<div class='port'>" +
+                "<div id='small-piece'></div><div id='medium-piece'></div><div id='large-piece'></div>" +
+              "</div>"
+
+  var down = "<div class='port'>" +
+                "<div id='large-piece'></div><div id='medium-piece'></div><div id='small-piece'></div>" +
+              "</div>"
 
   return {
-    template: "<div class='port'>" +
-                "<div id='{{selection.first}}'></div><div id='medium-piece'></div><div id='{{selection.third}}'></div>" +
-              "</div>",
     scope: {
-      orient: '@orient'
+      portNum: '='
     },
     link: function(scope, element, attributes){
-      if(scope.orient == 'up'){
-        scope.selection = up;
-      } else {
-        scope.selection = down;
+      var result = "<div layout='row' class='switch-body'>"
+      for(var i=0;i < scope.portNum;i++){
+        if(i%2==0){
+          result += "<div layout='column' class='chasis'>"
+          result += up;
+        } else {
+          result += down;
+          result += "</div>"
+        }
       }
+      result += "</div>"
+      element.html(result)
     }
   }
 })
