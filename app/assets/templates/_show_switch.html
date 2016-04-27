@@ -21,7 +21,7 @@
   </div>
   <span flex></span>
   <div layout="column" layout-align="start">
-    <md-progress-circular ng-hide="loaded" class="md-hue-2" md-diameter="55em"></md-progress-circular>
+    <md-progress-circular md-mode='indeterminate' ng-hide="loaded" class="md-hue-2" md-diameter="55em"></md-progress-circular>
   </div>
 </div>
 
@@ -113,7 +113,7 @@
             Notes:
           </td>
           <td>
-            <textarea ng-model="switchInfo.notes" rows="7" id="note-area">
+            <textarea ng-model="switchInfo.notes" placeholder="" rows="7" id="note-area">
             </textarea>
           </td>
         </tr>
@@ -154,3 +154,7 @@
   </tbody>
 </table> 
 {{switchData}}
+
+
+<port-icon orient="up"></port-icon>
+<port-icon></port-icon>

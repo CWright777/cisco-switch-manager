@@ -69,6 +69,7 @@ function($scope,$state,Switch,$stateParams,$mdDialog, $mdMedia){
         $scope.switchData = switchData;
         $scope.loaded = true;
         $scope.switchInfo = {}
+        $scope.moduleState = 'link'
       })
     });
   };
