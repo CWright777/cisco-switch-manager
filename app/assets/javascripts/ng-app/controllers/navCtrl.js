@@ -2,7 +2,8 @@ angular.module('networkApp')
 .controller('navCtrl', [
 '$scope',
 'Auth',
-function($scope, Auth, $timeout, $mdSidenav, $log){
+'$state',
+function($scope, Auth,$state, $timeout, $mdSidenav, $log){
   $scope.signedIn = Auth.isAuthenticated;
 
   $scope.logout = Auth.logout;
@@ -21,6 +22,7 @@ function($scope, Auth, $timeout, $mdSidenav, $log){
 
   $scope.$on('devise:logout', function (e, user){
     $scope.user = {};
+    $state.go('login')
   });
 
   $scope.toggleLeft = buildDelayedToggler('left');

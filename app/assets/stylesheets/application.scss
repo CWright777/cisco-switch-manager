@@ -2,6 +2,23 @@
 *= require_tree .
 *= require_tree ../../../vendor/assets/bower_components/.
 */
+
+.login {
+  width: 30%;
+  padding: 5em;
+  margin: auto;
+  h1,form {
+    padding: 0;
+    margin: 0 0 .5em 0;
+  }
+  button {
+    float: right;
+  }
+
+}
+.container {
+  height:100vh;
+}
 .switch-body {
   border: solid black 1px;
   width: 30em;

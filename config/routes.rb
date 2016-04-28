@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => {sessions: 'sessions'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #get 'switch/disable/(:id)' => 'switches#disable'
   #get 'switch/enable/(:id)' => 'switches#enable'
   #resources :sessions, only: [:create,:destroy]
-  resources :users
+  #resources :users
   resources :switches, :defaults => { :format => :json }
   #resources :dashboard
 

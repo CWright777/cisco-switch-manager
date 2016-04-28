@@ -1,13 +1,14 @@
-<div class="page-header">
-  <h1>Log In</h1>
+<div class="container" layout="column" layout-align="center center" flex="noshrink" layout-margin>
+  <div class="login" md-whiteframe="5">
+    <h1>Log In</h1>
+    <form>
+      <div class="input-group">
+        <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
+      </div>
+      <div class="input-group">
+        <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
+      </div>
+      <button ng-click="login()" class="btn btn-default" value="Log In">Log In</button>
+    </form>
+  </div>
 </div>
-
-<form ng-submit="login()">
-  <div class="input-group">
-    <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
-  </div>
-  <div class="input-group">
-    <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
-  </div>
-  <input type="submit" class="btn btn-default" value="Log In">
-</form>

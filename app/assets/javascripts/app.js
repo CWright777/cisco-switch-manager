@@ -51,7 +51,13 @@ function($stateProvider, $urlRouterProvider) {
           templateUrl: '_dashboard.html',
           controller: 'dashboardCtrl'
         }
-      }
+      },
+      onEnter: ['$state','Auth', function($state, Auth) {
+        Auth.currentUser().then(function(){
+        }, function(){
+          $state.go('login')
+        })
+      }]
     })
     .state('switch', {
       url: '/dashboard/:switchId',
@@ -71,8 +77,13 @@ function($stateProvider, $urlRouterProvider) {
           templateUrl: '_show_switch.html',
           controller: 'showSwitchCtrl'
         }
-
-      }
+      },
+      onEnter: ['$state','Auth', function($state, Auth) {
+        Auth.currentUser().then(function(){
+        }, function(){
+          $state.go('login')
+        })
+      }]
     })
 
   $urlRouterProvider.otherwise('dashboard');
