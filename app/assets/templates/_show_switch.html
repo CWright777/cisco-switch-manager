@@ -4,7 +4,7 @@
     <tbody>
       <tr>
         <td>
-          <a href="#/dashboard">Switches</a>
+          <a class="text-color" href="#/dashboard">Switches</a>
         </td>
         <td>
           <md-icon id="chev-right">chevron_right</md-icon>
@@ -13,7 +13,7 @@
           <span display-status-icon="switchData.contactedAt"></span>
         </td>
         <td>
-          <h2 class='md-display-1'>{{switchData.name}}</h2>
+          <h2 class='text-color md-display-1'>{{switchData.name}}</h2>
         </td>
       </tr>
     </tbody>
@@ -21,7 +21,7 @@
   </div>
   <span flex></span>
   <div layout="column" layout-align="start">
-    <md-progress-circular md-mode='indeterminate' ng-hide="loaded" class="md-hue-2" md-diameter="55em"></md-progress-circular>
+    <md-progress-circular md-mode='indeterminate' ng-hide="loaded" class="md-primary" md-diameter="55em"></md-progress-circular>
   </div>
 </div>
 
@@ -31,12 +31,12 @@
       <tbody>
         <tr>
           <td>
-            <h2 >
+            <h2 class="text-color">
               Configuration&nbsp&nbsp| 
             </h2>
           </td>
           <td>
-            <a href="" ng-click="revealConfigure()">
+            <a class="text-color" href="" ng-click="revealConfigure()">
               Edit Configuration
             </a>
           </td>
@@ -69,7 +69,7 @@
       <tbody>
         <tr>
           <td>
-            <h2 id="h-line">
+            <h2 class="text-color" id="h-line">
               Configuration
             </h2>
           </td>
@@ -127,7 +127,7 @@
     </table>
   </div>
 </div>
-<h2 class='subhead'>Ports</h2>
+<h2 class='subhead text-color'>Ports</h2>
 <div>
   <port-icon port-num="12"></port-icon>
 </div>

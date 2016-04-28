@@ -10,7 +10,8 @@ angular.module('networkApp', [
 .config([
 '$stateProvider',
 '$urlRouterProvider',
-function($stateProvider, $urlRouterProvider) {
+'$mdThemingProvider',
+function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
 
   $stateProvider
     .state('login', {
@@ -85,6 +86,13 @@ function($stateProvider, $urlRouterProvider) {
         })
       }]
     })
+
+  $mdThemingProvider.theme('default')
+  .primaryPalette('blue-grey', {
+    'default': '700'
+  })
+
+  .accentPalette('yellow')
 
   $urlRouterProvider.otherwise('dashboard');
 }])
