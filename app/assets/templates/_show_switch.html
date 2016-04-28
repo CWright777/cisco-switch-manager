@@ -13,7 +13,7 @@
           <span display-status-icon="switchData.contactedAt"></span>
         </td>
         <td>
-          <h2 class='text-color md-display-1'>{{switchData.name}}</h2>
+          <h2 class='text-color md-display-1 switch-name'>{{switchData.name}}</h2>
         </td>
       </tr>
     </tbody>
@@ -144,7 +144,7 @@
   </tr>
   <tbody>
     <tr ng-repeat="port in switchData.ports">
-      <td>{{port.status}}</td>
+      <td><span display-activity-icon="port.status"></span></td>
       <td></td>
       <td>{{port.port_name}}</td>
       <td>{{port.mac_address}}</td>

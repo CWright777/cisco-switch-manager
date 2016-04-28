@@ -88,7 +88,7 @@
   }
 
   h2 {
-    margin: -.4em 0 0 0;
+    margin: -.3em 0 0 .1em;
     //margin: 0px;
   }
   h2,md-icon {
@@ -154,6 +154,9 @@
   }
 }
 
+.switch-name {
+    font-weight:bold;
+}
 .work {
   position:relative;
   height:93vh;
