@@ -1,13 +1,9 @@
-<div>
-  <md-content>
-      <div ui-view="header"></div>
-    <section layout="row" flex>
-      <div ui-view="sidenav" class="work"></div>
-      <md-content flex layout-padding>
-        <div layout="column" layout-fill>
-          <div ui-view="main"></div>
-        </div>
-      </md-content>
-    </section>
-  </md-content>
-</div>
+<div ui-view="header" layout="column"></div>
+<section layout="row" class="container">
+  <div ui-view="sidenav" layout="row"></div>
+  <div layout="row" layout-padding>
+    <md-content>
+      <div ui-view="main"></div>
+    </md-content>
+  </div>
+</section>
