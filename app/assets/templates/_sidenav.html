@@ -3,9 +3,34 @@
     <md-button ng-click="close()" class="md-primary" hide-gt-md="">
       Close Sidenav Left
     </md-button>
-    <p hide-md="" show-gt-md="">
-      This sidenav is locked open on your device. To go back to the default behavior,
-      narrow your display.
-    </p>
+    <md-list>
+      <md-item>
+        <a href="#" class="text-color side-nav">
+          <md-item-content layout="row" layout-align="start center">
+            <div class="inset">
+              <md-icon>storage</md-icon>
+            </div>
+            <div class="inset">
+              Switches
+            </div>
+          </md-item-content>
+        </a>
+      </md-item>
+      <md-divider></md-divider>
+      <md-item>
+        <a href="#" class="text-color side-nav">
+          <md-item-content layout="row" layout-align="start center">
+            <div class="inset">
+              <md-icon>help_outline</md-icon>
+            </div>
+            <div class="inset">
+              Help
+            </div>
+          </md-item-content>
+        </a>
+      </md-item>
+      <md-divider></md-divider>
+    </md-list>
 
 </md-sidenav>
+

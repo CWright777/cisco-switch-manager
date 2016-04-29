@@ -11,7 +11,8 @@ angular.module('networkApp', [
 '$stateProvider',
 '$urlRouterProvider',
 '$mdThemingProvider',
-function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
+"$mdIconProvider",
+function($stateProvider, $urlRouterProvider,$mdThemingProvider,$mdIconProvider) {
 
   $stateProvider
     .state('login', {
@@ -92,7 +93,8 @@ function($stateProvider, $urlRouterProvider,$mdThemingProvider) {
     'default': '700'
   })
 
-  .accentPalette('yellow')
-
+  $mdIconProvider
+    .iconSet('tech', 'images/switch.svg', 24)
+    
   $urlRouterProvider.otherwise('dashboard');
 }])

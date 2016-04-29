@@ -1,6 +1,6 @@
 <div class="container" layout="column" layout-align="center center" flex="noshrink" layout-margin>
-  <div class="login" md-whiteframe="5">
-    <h1>Log In</h1>
+  <div class="login text-color" md-whiteframe="5">
+    <h1 class="text-color">Log In</h1>
     <form>
       <div class="input-group">
         <input type="email" class="form-control" placeholder="Email" ng-model="user.email">
@@ -8,7 +8,11 @@
       <div class="input-group">
         <input type="password" class="form-control" placeholder="Password" ng-model="user.password">
       </div>
-      <button ng-click="login()" class="btn btn-default" value="Log In">Log In</button>
+      <div layout="row">
+        <a href="#/register" class="text-color">Don't han an account? Sign up here!</a>
+        <div flex></div>
+        <md-button ng-click="login()" class="md-primary md-raised" value="Log In">Log In</md-button>
+      </div>
     </form>
   </div>
 </div>

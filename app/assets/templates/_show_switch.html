@@ -1,4 +1,4 @@
-<div layout="row" class="status-heading">
+<div layout="row">
   <div layout="column">
   <table class="breadcrumb" flex="15">
     <tbody>
@@ -24,6 +24,7 @@
     <md-progress-circular md-mode='indeterminate' ng-hide="loaded" class="md-primary" md-diameter="55em"></md-progress-circular>
   </div>
 </div>
+<md-divider></md-divider>
 
 <div ng-switch="moduleState" layout="row">
   <div ng-switch-when="link">
@@ -72,6 +73,7 @@
             <h2 class="text-color" id="h-line">
               Configuration
             </h2>
+            <md-divider style="width: 33em"></md-divider>
           </td>
         </tr>
         <tr>
@@ -128,7 +130,8 @@
   </div>
 </div>
 <h2 class='subhead text-color'>Ports</h2>
-<div>
+<md-divider></md-divider>
+<div class="switch-model">
   <port-icon port-num="12"></port-icon>
 </div>
 <table class="info-table">

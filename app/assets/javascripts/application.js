@@ -6,5 +6,6 @@
 //= require angular-aria
 //= require angular-messages
 //= require angular-material
+//= require_tree ../images
 //= require_tree ../templates
 //= require_tree .
