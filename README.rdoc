@@ -4,7 +4,7 @@ Switch Manager is an application developed with AngularJS and Ruby on Rails to
 to manage Cisco IOS switches. It provides a easy to use dashboard as opposed
 to Cisco's CLI.
 
-![alt tag](https://s3-us-west-1.amazonaws.com/cliff-website/SwitchManager)
+https://s3-us-west-1.amazonaws.com/cliff-website/SwitchManager
 
 === Requirements
 
@@ -13,4 +13,4 @@ A copy of libsmi is required to run Switch Manager.
 The applicaton also requires switch/es to interact with. I used VIRL to create
 a virtual network environment but physical hardware should work as well.
 
-![alt tag](https://s3-us-west-1.amazonaws.com/cliff-website/VIRL)
+https://s3-us-west-1.amazonaws.com/cliff-website/VIRL
