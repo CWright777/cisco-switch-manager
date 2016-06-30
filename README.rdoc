@@ -1,28 +1,16 @@
-== README
+== Cisco Switch Manager
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Switch Manager is an application developed with AngularJS and Ruby on Rails to
+to manage Cisco IOS switches. It provides a easy to use dashboard as opposed
+to Cisco's CLI.
 
-Things you may want to cover:
+![alt tag](https://s3-us-west-1.amazonaws.com/cliff-website/SwitchManager)
 
-* Ruby version
+=== Requirements
 
-* System dependencies
+A copy of libsmi is required to run Switch Manager.
 
-* Configuration
+The applicaton also requires switch/es to interact with. I used VIRL to create
+a virtual network environment but physical hardware should work as well.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+![alt tag](https://s3-us-west-1.amazonaws.com/cliff-website/VIRL)
